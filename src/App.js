@@ -17,8 +17,11 @@ function App() {
 
   return (
     <div>
+      <center><p>Made By Sam Prince Franklin with ⚛️ </p></center>
     <NewExpense onAddExpense ={addExpenseHandler}/>
     <Expenses items={expenses}/>
+    
+
     </div>
   );
 };
