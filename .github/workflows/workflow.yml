@@ -1,28 +1,20 @@
-name: expense
-
-on:
-  push:
-    branches:
-      -"master"
-
+name: Build and Deploy
+on: [push]
 jobs:
-  build:
-    run-on: ubuntu-latest
-
-    stratergy:
-      matrix:
-        node-version: [17.x]
-
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.4.0
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
 
-      - name: Install and build
-        run: npm install && npm run build
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm ci
+          npm run build
 
-      - name: Deploy
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
-          branch: gh-pages
-          folder: build
-
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
