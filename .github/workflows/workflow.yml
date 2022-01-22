@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Expense React App Deploy
 on: [push]
 jobs:
   build-and-deploy:
