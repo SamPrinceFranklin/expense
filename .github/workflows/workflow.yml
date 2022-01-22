@@ -1,4 +1,4 @@
-name: Expense
+name: expense
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout
-       uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.0
 
       - name: Install and build
         run: npm install && npm run build
